@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Marta.Runtime.HostApplicationType" ApplicationTypeVersion="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Marta.Runtime.HostPkg" ServiceManifestVersion="1.0.0.0" />
+  </ServiceManifestImport>
+  <DefaultServices>
+    <Service Name="BusActorService">
+      <StatefulService ServiceTypeName="BusActorServiceType" TargetReplicaSetSize="3" MinReplicaSetSize="2">
+        <UniformInt64Partition PartitionCount="9" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+    <Service Name="RouteActorService">
+      <StatelessService ServiceTypeName="RouteActorServiceType">
+        <UniformInt64Partition PartitionCount="9" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatelessService>
+    </Service>
+    <Service Name="RouteCatalogActorService">
+      <StatelessService ServiceTypeName="RouteCatalogActorServiceType">
+        <UniformInt64Partition PartitionCount="9" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatelessService>
+    </Service>
+    <Service Name="StopActorService">
+      <StatefulService ServiceTypeName="StopActorServiceType" TargetReplicaSetSize="3" MinReplicaSetSize="2">
+        <UniformInt64Partition PartitionCount="9" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+    <Service Name="TripActorService">
+      <StatelessService ServiceTypeName="TripActorServiceType">
+        <UniformInt64Partition PartitionCount="9" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatelessService>
+    </Service>
+  </DefaultServices>
+</ApplicationManifest>
